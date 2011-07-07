@@ -1,0 +1,22 @@
+<h1>Dashboard Page</h1>
+<table border="1" ng:hide="selectedItem != undefined" id="user-list">
+    <tr>
+        <td ng:repeat="(key, attr) in users[0]">{{key}}</td>
+    </tr>
+    <tr ng:repeat="user in users">
+        <td ng:repeat="(key, attr) in user">{{user[key]}}</td>
+        <td><button ng:click="edit(user)">Edit</button></td>
+    </tr>
+</table>
+<table border="1" ng:show="selectedItem != undefined" id="user-detail">
+    <tr>
+        <td>Edit item</td>
+    </tr>
+    <tr ng:repeat="(key, attr) in selectedItem">
+        <td>{{key}}</td>
+        <td><input name="selectedItem[key]" size="80"></td>
+    </tr>
+    <tr>
+        <td><button ng:click="save()">Save</button></td>
+    </tr>
+</table>
