@@ -2,9 +2,20 @@
 <html xmlns:ng="http://angularjs.org">
 <head>
 <title>Rest Test</title>
-<script src="_js/jquery-1.4.2.min.js" type="text/javascript"></script>
 <script src="lib/angular/angular.min.js" type="text/javascript" ng:autobind></script>
 <script type="text/javascript">
+  
+CurrentUserController.$inject = ['$resource'];
+  function CurrentUserController($resource){
+   this.Activity = $resource( '../rest/actions/get_current_user');
+   this.fetch();
+  }
+  CurrentUserController.prototype = {
+   fetch: function(){
+    this.currentUser = this.Activity.get();
+   }
+  };
+
 AppController.$inject = ['$resource', '$updateView'];
 function AppController($resource, $updateView){
     this.Country = $resource('../rest/Country/:key', {key: '@key'});
@@ -42,6 +53,17 @@ AppController.prototype = {
 </script>
 </head>
 <body ng:controller="AppController">
+
+ <a href="https://pivotalexpert.rpxnow.com/openid/v2/signin?token_url=http://127.0.0.1:8080/rpx.php">Hard coded signin link that redirects back to http://127.0.0.1:8080 </a> <br>
+ <a href="https://pivotalexpert.rpxnow.com/openid/v2/signin?token_url=http://deli.appspot.com/rpx.php">Hard coded signin link that redirects back to deli.appspot.com </a> <br>
+ <a href="/logout?target=/">Hard coded sign out link that redirects back to / </a> <br> 
+ <br>
+
+  <div ng:controller="CurrentUserController">
+   Current User: {{currentUser.nickname}}
+   <hr/>   
+  </div>
+      
     Model: <input name="model"/><button ng:click="list()">Reload</button>
     <table border="1" ng:hide="selectedItem != undefined">
         <tr>
