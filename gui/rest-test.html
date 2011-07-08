@@ -7,7 +7,7 @@
   
 CurrentUserController.$inject = ['$resource'];
   function CurrentUserController($resource){
-   this.Activity = $resource( '../rest/actions/get_current_user');
+   this.Activity = $resource( '../rest/action/get_current_user');
    this.fetch();
   }
   CurrentUserController.prototype = {
