@@ -14,7 +14,7 @@ describe('Tournament controllers', function() {
         beforeEach(function() {
             scope = angular.scope();
             $browser = scope.$service('$browser');
-            $browser.xhr.expectGET('rest//User.json?key=undefined').respond([
+            $browser.xhr.expectGET('../../rest//User.json?key=undefined').respond([
         {nickname: 'test1',user_id:'https://www.google.com/profiles/1', email:'test1@test.com',key:'testkey1'},
         {nickname: 'test2',user_id:'https://www.google.com/profiles/2', email:'test2@test.com',key:'testkey2'}]);
         ctrl = scope.$new(DashboardCtrl);
@@ -41,7 +41,7 @@ describe('Tournament controllers', function() {
             ctrl.edit(ctrl.users[0]);
             ctrl.selectedItem['nickname'] = 'test3';
             ctrl.save(ctrl.users[0]);
-            expect(ctrl.selectedItem).toEqualData({ nickname : 'test3', user_id : 'https://www.google.com/profiles/1', email : 'test1@test.com', key : 'testkey1',
+            expect(ctrl.users[0]).toEqualData({ nickname : 'test3', user_id : 'https://www.google.com/profiles/1', email : 'test1@test.com', key : 'testkey1',
                 $get : Function, $save : Function, $query : Function, $remove : Function, $delete : Function } );
         });
 

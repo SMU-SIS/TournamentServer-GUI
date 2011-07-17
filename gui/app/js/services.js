@@ -23,7 +23,7 @@ angular.service('Tournament', function($route, $location, $window) {
 }, {$inject:['$route', '$location', '$window'], $eager: true});
 
 /**
- * User Service which is responsible for getting rest user json data for the app.
+ * Service which is responsible for getting rest model json data for the app.
  */
 angular.service('Model', function($resource){
     return $resource('../../rest/:model/:obj',{key: '@key'});
