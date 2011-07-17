@@ -1,1 +1,22 @@
 <h1>My Apps Page</h1>
+<table border="1" ng:hide="selectedItem != undefined" id="app-list">
+    <tr>
+        <td ng:repeat="(key, attr) in apps[0]">{{key}}</td>
+    </tr>
+    <tr ng:repeat="app in apps">
+        <td ng:repeat="(key, attr) in app">{{app[key]}}</td>
+        <td><button ng:click="edit(app)">Edit</button></td>
+    </tr>
+</table>
+<table border="1" ng:show="selectedItem != undefined" id="app-detail">
+    <tr>
+        <td>Edit item</td>
+    </tr>
+    <tr ng:repeat="(key, attr) in selectedItem">
+        <td>{{key}}</td>
+        <td><input name="selectedItem[key]" size="80"></td>
+    </tr>
+    <tr>
+        <td><button ng:click="save()">Save</button></td>
+    </tr>
+</table>

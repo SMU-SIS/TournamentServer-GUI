@@ -1,8 +1,18 @@
 /* Tournament Controllers */
+function CurrentUserController($resource){
+    this.Activity = $resource( '../../rest/action/get_current_user');
+    this.fetch();
+}
+CurrentUserController.prototype = {
+    fetch: function(){
+               this.currentUser = this.Activity.get();
+           }
+};
+CurrentUserController.$inject = ['$resource'];
 
 function DashboardCtrl(Model_) {
-  this.model = 'User';
-  this.users = Model_.query({obj: this.model+'.json'});
+    this.model = 'User';
+    this.users = Model_.query({obj: this.model+'.json'});
 }
 DashboardCtrl.prototype = {
     edit: function(user) {
@@ -12,10 +22,21 @@ DashboardCtrl.prototype = {
               this.selectedItem = undefined;
           }
 }
-//DashboardCtrl.$inject = ['Model'];
+DashboardCtrl.$inject = ['Model'];
 
-function MyappsCtrl() {}
-//MyappsCtrl.$inject = [];
+function MyappsCtrl(Model_) {
+  this.model = 'App';
+  this.apps = Model_.query({obj: this.model+'.json'});
+}
+MyappsCtrl.prototype = {
+    edit: function(app) {
+              this.selectedItem = app;
+          },
+    save: function(app) {
+              this.selectedItem = undefined;
+          }
+}
+MyappsCtrl.$inject = ['Model'];
 
 function TournamentsCtrl() {}
 //TournamentsCtrl.$inject = [];

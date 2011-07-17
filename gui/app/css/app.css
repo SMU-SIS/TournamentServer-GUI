@@ -54,6 +54,9 @@ html, body {
   content: "";
   padding: 0;
 }
+.user{
+    float:right;
+}
 
 .wrapper {
     min-height: 100%;

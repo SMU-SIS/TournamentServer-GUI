@@ -17,6 +17,9 @@
                     <li><a href="#/showroom">Showroom</a></li>
                     <li><a href="#/createapp">Create New App</a></li>
                 </ul>
+                <div class="user" ng:controller="CurrentUserController">
+                    Current User: {{currentUser.nickname}}
+                </div>
             </div>
             <ng:view></ng:view>
             <div class="push"></div>
