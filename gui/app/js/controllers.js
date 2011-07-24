@@ -12,7 +12,7 @@ CurrentUserController.$inject = ['$resource'];
 
 function DashboardCtrl(Model_) {
     this.model = 'User';
-    this.users = Model_.query({obj: this.model+'.json'});
+    this.users = Model_.query({model: this.model+'.json'});
 }
 DashboardCtrl.prototype = {
     edit: function(user) {
@@ -26,7 +26,7 @@ DashboardCtrl.$inject = ['Model'];
 
 function MyappsCtrl(Model_) {
   this.model = 'App';
-  this.apps = Model_.query({obj: this.model+'.json'});
+  this.apps = Model_.query({model: this.model+'.json'});
 }
 MyappsCtrl.prototype = {
     edit: function(app) {
