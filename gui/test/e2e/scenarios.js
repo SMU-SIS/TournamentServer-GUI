@@ -71,7 +71,6 @@ describe('tournament', function() {
             browser().navigateTo('#/myapps');
         });
 
-
         it('should render My Apps Page when user navigates to /myapps', function() {
             expect(element('ng\\:view h1:first').text()).
             toMatch(/^My Apps Page$/);
@@ -93,6 +92,10 @@ describe('tournament', function() {
         it('should render Tournaments Page when user navigates to /tournaments', function() {
             expect(element('ng\\:view h1:first').text()).
             toMatch(/^Tournaments Page$/);
+            expect(element('ng\\:view #tournament-list tr:first td:first').text()).
+                toMatch(/^finished$/);
+            expect(element('ng\\:view #tournament-list tr:first td:last').text()).
+                toMatch(/^created$/);
         });
 
     });
@@ -107,6 +110,10 @@ describe('tournament', function() {
         it('should render Showroom Page when user navigates to /showroom', function() {
             expect(element('ng\\:view h1:first').text()).
             toMatch(/^Showroom Page$/);
+            expect(element('ng\\:view #game-list tr:first td:first').text()).
+                toMatch(/^boards$/);
+            expect(element('ng\\:view #game-list tr:first td:last').text()).
+                toMatch(/^jsongamelogs$/);
         });
 
     });

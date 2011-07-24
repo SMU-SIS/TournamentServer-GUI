@@ -1,1 +1,22 @@
 <h1>Tournaments Page</h1>
+<table border="1" ng:hide="selectedItem != undefined" id="tournament-list">
+    <tr>
+        <td ng:repeat="(key, attr) in tournaments[0]">{{key}}</td>
+    </tr>
+    <tr ng:repeat="tournament in tournaments">
+        <td ng:repeat="(key, attr) in tournament">{{tournament[key]}}</td>
+        <td><button ng:click="edit(tournament)">Edit</button></td>
+    </tr>
+</table>
+<table border="1" ng:show="selectedItem != undefined" id="tournament-detail">
+    <tr>
+        <td>Edit item</td>
+    </tr>
+    <tr ng:repeat="(key, attr) in selectedItem">
+        <td>{{key}}</td>
+        <td><input name="selectedItem[key]" size="80"></td>
+    </tr>
+    <tr>
+        <td><button ng:click="save()">Save</button></td>
+    </tr>
+</table>

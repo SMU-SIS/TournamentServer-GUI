@@ -38,11 +38,33 @@ MyappsCtrl.prototype = {
 }
 MyappsCtrl.$inject = ['Model'];
 
-function TournamentsCtrl() {}
-//TournamentsCtrl.$inject = [];
+function TournamentsCtrl(Model_) {
+  this.model = 'TournamentHeat';
+  this.tournaments = Model_.query({model: this.model+'.json'});
+}
+TournamentsCtrl.prototype = {
+    edit: function(tournament) {
+              this.selectedItem = tournament;
+          },
+    save: function(tournament) {
+              this.selectedItem = undefined;
+          }
+}
+TournamentsCtrl.$inject = ['Model'];
 
-function ShowroomCtrl() {}
-//ShowroomCtrl.$inject = [];
+function ShowroomCtrl(Model_) {
+  this.model = 'Game';
+  this.games = Model_.query({model: this.model+'.json'});
+}
+ShowroomCtrl.prototype = {
+    edit: function(game) {
+              this.selectedItem = game;
+          },
+    save: function(game) {
+              this.selectedItem = undefined;
+          }
+}
+ShowroomCtrl.$inject = ['Model'];
 
 function CreateappCtrl() {}
 //CreateappCtrl.$inject = [];
