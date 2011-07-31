@@ -3,9 +3,11 @@
     <tr>
         <td ng:repeat="(key, attr) in users[0]">{{key}}</td>
     </tr>
-    <tr ng:repeat="user in users">
+    <tr ng:repeat="user in users.$filter(currentUser.nickname)">
         <td ng:repeat="(key, attr) in user">{{user[key]}}</td>
         <td><button ng:click="edit(user)">Edit</button></td>
+        <td><a href="#/myapps"><button>View Apps</button></a></td>
+        <td><a href="#/tournaments"><button>View Tournaments</button></a></td>
     </tr>
 </table>
 <table border="1" ng:show="selectedItem != undefined" id="user-detail">

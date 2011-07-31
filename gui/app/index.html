@@ -5,7 +5,7 @@
         <title>Tournament Server</title>
         <link rel="stylesheet" href="css/app.css"/>
     </head>
-    <body>
+    <body ng:controller="MainController">
         <div class="wrapper">
             <div class="top-bar">
                 <h1 class="logo"></h1>
@@ -17,7 +17,7 @@
                     <li><a href="#/showroom">Showroom</a></li>
                     <li><a href="#/createapp">Create New App</a></li>
                 </ul>
-                <div class="user" ng:controller="CurrentUserController">
+                <div class="user">
                     Current User: {{currentUser.nickname}}
                 </div>
             </div>

@@ -62,6 +62,15 @@ describe('tournament', function() {
                 toMatch(/^key$/);
         });
 
+        it('should display current user information', function() {
+            expect(element('ng\\:view h1:first').text()).
+            toMatch(/^Dashboard Page$/);
+            expect(element('ng\\:view #user-list tr:last td:first').text()).
+                toMatch(/^scboesch$/);
+            expect(element('ng\\:view #user-list tr:last td:last').text()).
+                toMatch(/^View Tournaments$/);
+        });
+
     });
 
 

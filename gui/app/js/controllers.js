@@ -1,18 +1,19 @@
 /* Tournament Controllers */
-function CurrentUserController($resource){
+function MainController($resource){
     this.Activity = $resource( '../../rest/action/get_current_user');
     this.fetch();
 }
-CurrentUserController.prototype = {
+MainController.prototype = {
     fetch: function(){
                this.currentUser = this.Activity.get();
            }
-};
-CurrentUserController.$inject = ['$resource'];
+}
+MainController.$inject = ['$resource'];
 
-function DashboardCtrl(Model_) {
+function DashboardCtrl($resource) {
+    this.currentUser = $resource('../../rest/action/get_current_user').get();
     this.model = 'User';
-    this.users = Model_.query({model: this.model+'.json'});
+    this.users = $resource('../../rest/'+this.model+'.json',{key: '@key'}).query();
 }
 DashboardCtrl.prototype = {
     edit: function(user) {
@@ -22,11 +23,11 @@ DashboardCtrl.prototype = {
               this.selectedItem = undefined;
           }
 }
-DashboardCtrl.$inject = ['Model'];
+DashboardCtrl.$inject = ['$resource'];
 
 function MyappsCtrl(Model_) {
-  this.model = 'App';
-  this.apps = Model_.query({model: this.model+'.json'});
+    this.model = 'App';
+    this.apps = Model_.query({model: this.model+'.json'});
 }
 MyappsCtrl.prototype = {
     edit: function(app) {
@@ -39,8 +40,8 @@ MyappsCtrl.prototype = {
 MyappsCtrl.$inject = ['Model'];
 
 function TournamentsCtrl(Model_) {
-  this.model = 'TournamentHeat';
-  this.tournaments = Model_.query({model: this.model+'.json'});
+    this.model = 'TournamentHeat';
+    this.tournaments = Model_.query({model: this.model+'.json'});
 }
 TournamentsCtrl.prototype = {
     edit: function(tournament) {
@@ -53,8 +54,8 @@ TournamentsCtrl.prototype = {
 TournamentsCtrl.$inject = ['Model'];
 
 function ShowroomCtrl(Model_) {
-  this.model = 'Game';
-  this.games = Model_.query({model: this.model+'.json'});
+    this.model = 'Game';
+    this.games = Model_.query({model: this.model+'.json'});
 }
 ShowroomCtrl.prototype = {
     edit: function(game) {
