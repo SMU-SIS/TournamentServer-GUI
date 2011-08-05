@@ -1,4 +1,5 @@
 /* Tournament Controllers */
+MainController.$inject = ['$resource'];
 function MainController($resource){
     this.Activity = $resource( '../../rest/action/get_current_user');
     this.fetch();
@@ -8,12 +9,12 @@ MainController.prototype = {
                this.currentUser = this.Activity.get();
            }
 }
-MainController.$inject = ['$resource'];
 
+DashboardCtrl.$inject = ['$resource'];
 function DashboardCtrl($resource) {
-    this.currentUser = $resource('../../rest/action/get_current_user').get();
-    this.model = 'User';
-    this.users = $resource('../../rest/'+this.model+'.json',{key: '@key'}).query();
+    this.currentUser = $resource( '../../rest/action/get_current_user').get();
+    this.temp_index = $resource('../../rest/temp_index').get();
+    this.users = $resource('../../rest/User.json',{key: '@key'}).query();
 }
 DashboardCtrl.prototype = {
     edit: function(user) {
@@ -23,8 +24,8 @@ DashboardCtrl.prototype = {
               this.selectedItem = undefined;
           }
 }
-DashboardCtrl.$inject = ['$resource'];
 
+MyappsCtrl.$inject = ['Model'];
 function MyappsCtrl(Model_) {
     this.model = 'App';
     this.apps = Model_.query({model: this.model+'.json'});
@@ -37,10 +38,10 @@ MyappsCtrl.prototype = {
               this.selectedItem = undefined;
           }
 }
-MyappsCtrl.$inject = ['Model'];
 
+TournamentsCtrl.$inject = ['Model'];
 function TournamentsCtrl(Model_) {
-    this.model = 'TournamentHeat';
+    this.model = 'tournament_heat';
     this.tournaments = Model_.query({model: this.model+'.json'});
 }
 TournamentsCtrl.prototype = {
@@ -51,8 +52,8 @@ TournamentsCtrl.prototype = {
               this.selectedItem = undefined;
           }
 }
-TournamentsCtrl.$inject = ['Model'];
 
+ShowroomCtrl.$inject = ['Model'];
 function ShowroomCtrl(Model_) {
     this.model = 'Game';
     this.games = Model_.query({model: this.model+'.json'});
@@ -65,7 +66,6 @@ ShowroomCtrl.prototype = {
               this.selectedItem = undefined;
           }
 }
-ShowroomCtrl.$inject = ['Model'];
 
-function CreateappCtrl() {}
 //CreateappCtrl.$inject = [];
+function CreateappCtrl() {}
