@@ -10,7 +10,6 @@
         <td>{{model.owner_nickname}}</td>
         <td><button ng:click="edit(users.$filter(currentUser.nickname))">Edit</button></td>
     </tr>
-
 </table>
 <table border="1" ng:show="selectedItem != undefined" id="user-detail">
     <tr ng:repeat="(key, attr) in selectedItem[0]">

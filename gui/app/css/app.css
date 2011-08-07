@@ -57,6 +57,20 @@ html, body {
 .user{
     float:right;
 }
+.menu a:link { 
+    color: #333333;
+}
+.menu a:visited { 
+    color: #FFFFFF;
+}
+.menu a:hover { 
+    color: #CCCCCC;
+    background-color: #333333;
+    text-decoration: none;
+}
+.menu a:active { 
+    color: #333333;
+}
 
 .wrapper {
     min-height: 100%;
