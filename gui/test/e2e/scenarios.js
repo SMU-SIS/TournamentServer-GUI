@@ -56,19 +56,9 @@ describe('tournament', function() {
         it('should render DashBoard Page when user navigates to /dashboard', function() {
             expect(element('ng\\:view h1:first').text()).
             toMatch(/^Dashboard Page$/);
-            expect(element('ng\\:view #user-list tr:first td:first').text()).
-                toMatch(/^nickname$/);
-            expect(element('ng\\:view #user-list tr:first td:last').text()).
-                toMatch(/^key$/);
         });
 
-        it('should display current user information', function() {
-            expect(element('ng\\:view h1:first').text()).
-            toMatch(/^Dashboard Page$/);
-            expect(element('ng\\:view #user-list tr:last td:first').text()).
-                toMatch(/^scboesch$/);
-            expect(element('ng\\:view #user-list tr:last td:last').text()).
-                toMatch(/^View Tournaments$/);
+        it('should display competition information', function() {
         });
 
     });

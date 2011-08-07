@@ -1,6 +1,5 @@
 <h1>Dashboard Page</h1>
-
-Competitions:<br>
+<h2>Competitions:</h2>
 <table class="competitions" cellspacing="0" width="900">
     <tr style="color:#00ce1d;font-weight:bold;text-align:left">
         <th>Name</th><th>Owner</th><th>key</th>
@@ -24,7 +23,7 @@ Competitions:<br>
 </table>
 <hr/>
 
-Registered Apps:<br>
+<h2>Registered Apps:</h2>
 <table class="apps" cellspacing="0" width="900">
     <tr style="color:#00ce1d;font-weight:bold;text-align:left">
         <th>Name</th><th>url</th><th ng:show="false">key</th>
@@ -36,7 +35,7 @@ Registered Apps:<br>
 </table>
 <hr/>
 
-Supported Games:<br>
+<h2>Supported Games:</h2>
 <table class="game_types" cellspacing="0" width="900">
     <tr style="color:#00ce1d;font-weight:bold;text-align:left">
         <th>Name</th><th>Referee</th><th ng:show="false">key</th>
@@ -49,17 +48,5 @@ Supported Games:<br>
 </table>
 <hr/>
 
-Tournament Heats:
-{{temp_index.competition_owner}}
-<table class="tournament_heats" cellspacing="0" width="900">
-    <tr style="color:#00ce1d;font-weight:bold;text-align:left">
-        <th>Name</th><th>Finished</th><th>GameType</th><th>Results</th><th>   </th>
-    </tr>
 
-    <tr ng:repeat="model in temp_index.tournament_heats">
-        <td>{{model.name}}</td>
-        <td>{{model.finished}}</td>
-        <td>{{model.gameType}}</td>
-        <td> <a href="#/tournaments">View</a> </td>
-    </tr>
-</table>
+

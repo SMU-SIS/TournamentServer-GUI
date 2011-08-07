@@ -10,11 +10,10 @@ MainController.prototype = {
            }
 }
 
-DashboardCtrl.$inject = ['$resource'];
-function DashboardCtrl($resource) {
-    this.currentUser = $resource( '../../rest/action/get_current_user').get();
-    this.temp_index = $resource('../../rest/temp_index').get();
-    this.users = $resource('../../rest/User.json',{key: '@key'}).query();
+DashboardCtrl.$inject = ['Model'];
+function DashboardCtrl(Model_) {
+    this.model = 'User';
+    this.users = Model_.query({model: this.model+'.json'});
 }
 DashboardCtrl.prototype = {
     edit: function(user) {
@@ -42,20 +41,13 @@ MyappsCtrl.prototype = {
 TournamentsCtrl.$inject = ['Model'];
 function TournamentsCtrl(Model_) {
     this.model = 'tournament_heat';
-    this.tournaments = Model_.query({model: this.model+'.json'});
-}
-TournamentsCtrl.prototype = {
-    edit: function(tournament) {
-              this.selectedItem = tournament;
-          },
-    save: function(tournament) {
-              this.selectedItem = undefined;
-          }
+    this.heat_key = this.params.heat_key;
+    this.heat_result = Model_.get({model: 'tournament_heat/'+this.heat_key});
 }
 
 ShowroomCtrl.$inject = ['Model'];
 function ShowroomCtrl(Model_) {
-    this.model = 'Game';
+    this.model = 'Course';
     this.games = Model_.query({model: this.model+'.json'});
 }
 ShowroomCtrl.prototype = {

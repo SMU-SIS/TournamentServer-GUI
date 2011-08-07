@@ -3,7 +3,7 @@
     <tr>
         <td ng:repeat="(key, attr) in apps[0]">{{key}}</td>
     </tr>
-    <tr ng:repeat="app in apps">
+    <tr ng:repeat="app in apps.$filter(currentUser.key)">
         <td ng:repeat="(key, attr) in app">{{app[key]}}</td>
         <td><button ng:click="edit(app)">Edit</button></td>
     </tr>

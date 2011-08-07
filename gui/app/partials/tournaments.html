@@ -1,22 +1,24 @@
 <h1>Tournaments Page</h1>
-<table border="1" ng:hide="selectedItem != undefined" id="tournament-list">
-    <tr>
-        <td ng:repeat="(key, attr) in tournaments[0]">{{key}}</td>
-    </tr>
-    <tr ng:repeat="tournament in tournaments">
-        <td ng:repeat="(key, attr) in tournament">{{tournament[key]}}</td>
-        <td><button ng:click="edit(tournament)">Edit</button></td>
+<table border="1" ng:hide="heat_key != ''" id="tournament-list">
+    <tr ng:repeat="model in temp_index.tournament_heats">
+        <td ng:show="false">{{model.key}}</td>
+        <td>{{model.name}}</td>
+        <td>{{model.finished}}</td>
+        <td>{{model.gameType}}</td>
+        <td> <a href="#/tournaments/{{model.key}}">View</a> </td>
+        <td ng:show="model.competition_owner==currentUser.key"><a href="../rest/run_tournament_heat/{{model.key}}"> Run tournament heat </a></td>
     </tr>
 </table>
-<table border="1" ng:show="selectedItem != undefined" id="tournament-detail">
-    <tr>
-        <td>Edit item</td>
+<table ng:show="heat_key != ''" class="results" cellspacing="0" width="900">
+    <tr style="color:#00ce1d;font-weight:bold;text-align:left">
+        <th>Points</th>
+        <th>Name</th>
+        <th ng:repeat="id in heat_result.jsonResult.ids">{{heat_result.jsonResult.appNames[id]}} ({{id}})</th>
     </tr>
-    <tr ng:repeat="(key, attr) in selectedItem">
-        <td>{{key}}</td>
-        <td><input name="selectedItem[key]" size="80"></td>
+
+    <tr ng:repeat="x_id in heat_result.jsonResult.ids">
+        <td>{{heat_result.jsonResult.points[x_id]}}</td><td>{{heat_result.jsonResult.appNames[x_id]}} ({{x_id}})</td>
+        <td ng:repeat="o_id in heat_result.jsonResult.ids"><a href="../rest/get_game/heat/{{heat_result.id}}/appx_id/{{x_id}}/appo_id/{{o_id}}"> {{heat_result.jsonResult.matchResults[x_id][o_id]}}</a></td>
     </tr>
-    <tr>
-        <td><button ng:click="save()">Save</button></td>
-    </tr>
+
 </table>
