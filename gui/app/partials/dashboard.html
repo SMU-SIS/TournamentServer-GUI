@@ -1,0 +1,51 @@
+<h1>Dashboard Page</h1>
+<h2>Competitions:</h2>
+<table class="competitions" cellspacing="0" width="900">
+    <tr style="color:#00ce1d;font-weight:bold;text-align:left">
+        <th>Name</th><th>Owner</th><th>key</th>
+    </tr>
+
+    <tr ng:repeat="model in temp_index.competitions">
+        <td>{{model.name}}</td>
+        <td>{{model.owner_nickname}}</td>
+        <td><button ng:click="edit(users.$filter(currentUser.nickname))">Edit</button></td>
+    </tr>
+</table>
+<table border="1" ng:show="selectedItem != undefined" id="user-detail">
+    <tr ng:repeat="(key, attr) in selectedItem[0]">
+        <td>{{key}}</td>
+        <td><input name="selectedItem[0][key]" size="80"></td>
+    </tr>
+    <tr>
+        <td><button ng:click="save()">Save</button></td>
+    </tr>
+</table>
+<hr/>
+
+<h2>Registered Apps:</h2>
+<table class="apps" cellspacing="0" width="900">
+    <tr style="color:#00ce1d;font-weight:bold;text-align:left">
+        <th>Name</th><th>url</th><th ng:show="false">key</th>
+    </tr>
+    <tr ng:repeat="model in temp_index.registered_apps[temp_index.competitions[0].key]">
+        <td>{{model.name}}</td>
+        <td ng:show="model.owner==currentUser.key">{{model.url}}</td>
+    </tr>
+</table>
+<hr/>
+
+<h2>Supported Games:</h2>
+<table class="game_types" cellspacing="0" width="900">
+    <tr style="color:#00ce1d;font-weight:bold;text-align:left">
+        <th>Name</th><th>Referee</th><th ng:show="false">key</th>
+    </tr>
+    <tr ng:repeat="model in temp_index.game_types">
+        <td>{{model.name}}</td>
+        <td>{{model.refereeURL}}</td>
+        <td ng:show="false">{{model.key}}</td>
+    </tr>
+</table>
+<hr/>
+
+
+
