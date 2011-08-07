@@ -20,5 +20,4 @@
         <td>{{heat_result.jsonResult.points[x_id]}}</td><td>{{heat_result.jsonResult.appNames[x_id]}} ({{x_id}})</td>
         <td ng:repeat="o_id in heat_result.jsonResult.ids"><a href="../rest/get_game/heat/{{heat_result.id}}/appx_id/{{x_id}}/appo_id/{{o_id}}"> {{heat_result.jsonResult.matchResults[x_id][o_id]}}</a></td>
     </tr>
-
 </table>
