@@ -1,17 +1,36 @@
 <!doctype html>
 <html xmlns:ng="http://angularjs.org/">
-<head>
-  <meta charset="utf-8">
-  <title>Google Phone Gallery</title>
-  <link rel="stylesheet" href="css/app.css"/>
-</head>
-<body ng:controller="PhoneCatCtrl">
-
-  <ng:view></ng:view>
-
-  <script src="lib/angular/angular.js" ng:autobind></script>
-  <script src="js/controllers.js"></script>
-  <script src="js/filters.js"></script>
-  <script src="js/services.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Tournament Server</title>
+        <link rel="stylesheet" href="css/app.css"/>
+    </head>
+    <body ng:controller="MainController">
+        <div class="wrapper">
+            <div class="top-bar">
+                <h1 class="logo"></h1>
+                <h1 class="title"></h1>
+                <ul class="menu">
+                    <li><a href="#/dashboard">Dashboard</a></li>
+                    <li><a href="#/myapps">My Apps</a></li>
+                    <li><a href="#/tournaments/">Tournaments</a></li>
+                    <li><a href="#/showroom">Showroom</a></li>
+                    <li><a href="#/createapp">Create New App</a></li>
+                </ul>
+                <div class="user">
+                    Current User: {{currentUser.nickname}}
+                </div>
+            </div>
+            <ng:view></ng:view>
+            <div class="push"></div>
+        </div>
+        <div class="footer">
+            <h6>Copyright (c) 2011 Singpath -- Developer: wgx731 | Designer: jeff</h6>
+        </div>
+        <script src="lib/angular/angular.js" ng:autobind></script>
+        <script src="js/services.js"></script>
+        <script src="js/controllers.js"></script>
+        <script src="js/filters.js"></script>
+        <script src="js/widgets.js"></script>
+    </body>
 </html>
